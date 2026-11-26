@@ -64,6 +64,8 @@ public class GlobalExceptionHandler {
                         (existing, replacement) -> existing
 
                 )); // 최종 연산: Map 생성
+        log.debug("{}\n{}", "***유효성 체크 에러***", errors); // map에 있는 toString으로 된다 => errors.toString()
+
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST) // 400
                 .body(
@@ -84,8 +86,8 @@ public class GlobalExceptionHandler {
         log.trace("트레이스 로깅");
         log.debug("디버그 로깅");
         log.info("인포 로깅");
-        log.warn("워닝 로깅");
-        log.error("에러 로깅");
+        log.warn("워닝 로깅", e);
+        log.error("에러 로깅", e); // e를 함께 전달하면 단순 메시지뿐만 아니라 실제 예외의 상세 정보까지 기록할 수 있음
 
         return ResponseEntity
                 .status(500) // HTTP 상태 코드 500

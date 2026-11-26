@@ -13,6 +13,6 @@ logging:
   level:
     # 로그 중요도: error > warn > info > debug > trace
     root: warn # 전체 애플리케이션의 기본 로그 레벨
-    org.msa.msa5spring: error # 해당 패키지의 로그 레벨
+    org.msa.msa5spring: debug # 해당 패키지의 로그 레벨
 
 debug: false # Spring Boot의 디버그 모드 활성화
