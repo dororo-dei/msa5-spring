@@ -1,5 +1,6 @@
 package org.msa.msa5spring.error;
 
+import lombok.extern.slf4j.Slf4j;
 import org.msa.msa5spring.response.GlobalResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 // 모든 컨트롤러에서 발생하는 예외를 공통으로 처리
+@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -79,6 +81,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<GlobalResponseDTO<Void>> handle(Exception e) {
+        log.trace("트레이스 로깅");
+        log.debug("디버그 로깅");
+        log.info("인포 로깅");
+        log.warn("워닝 로깅");
+        log.error("에러 로깅");
 
         return ResponseEntity
                 .status(500) // HTTP 상태 코드 500
